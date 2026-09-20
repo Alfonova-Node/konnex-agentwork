@@ -1,0 +1,3 @@
+import {createHash} from "node:crypto";import type {Task} from "../backend/store";
+export interface WorkProof{workerId:string;taskId:string;result:string;completionRatio:number;telemetry:{distanceMeters:number;durationSeconds:number};digest:string}
+export function simulateWork(task:Task):WorkProof{const result=`Completed simulated physical task: ${task.title}`;const telemetry={distanceMeters:12.4,durationSeconds:48};const payload=JSON.stringify({workerId:task.workerId,taskId:task.id,result,telemetry});return{workerId:task.workerId,taskId:task.id,result,completionRatio:1,telemetry,digest:createHash("sha256").update(payload).digest("hex")}}
