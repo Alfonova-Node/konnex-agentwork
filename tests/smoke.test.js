@@ -1,0 +1,1 @@
+const test=require("node:test");const assert=require("node:assert/strict");const {execFileSync}=require("node:child_process");test("project builds",()=>{execFileSync(process.platform==="win32"?"npm.cmd":"npm",["run","build"],{stdio:"ignore"});assert.ok(true)});
